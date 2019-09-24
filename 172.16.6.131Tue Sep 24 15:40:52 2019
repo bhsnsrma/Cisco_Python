@@ -1,8 +1,0 @@
-
-csr1000v_1#show ip int br 
-Interface              IP-Address      OK? Method Status                Protocol
-GigabitEthernet1       172.16.6.131    YES DHCP   up                    up      
-Loopback1              1.2.3.3         YES NVRAM  up                    up      
-Loopback2              unassigned      YES unset  up                    up      
-Loopback4              unassigned      YES unset  up                    up      
-csr1000v_1#
