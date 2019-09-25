@@ -8,7 +8,7 @@ client=paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 #create list of devices
-device_ip=["172.16.6.131","172.16.6.131","172.16.6.131"]
+device_ip=["192.168.176.128","192.168.176.128","192.168.176.128"]
 u='root'
 p='cisco'
 
@@ -29,4 +29,6 @@ for i in device_ip :
     #store file
         with open(i+time.ctime(),'w') as f:
             f.write(output.decode('ascii'))
-            time.sleep(1)
+            time.sleep(1) 
+
+
