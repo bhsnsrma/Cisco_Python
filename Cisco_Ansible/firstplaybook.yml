@@ -1,0 +1,25 @@
+---
+ - hosts: all
+   tasks: 
+    - name: i want to run commands
+      ios_command:
+       commands: 
+       - show ip int br
+       - show vers
+       - sh run
+       - sh clock
+    - name: Ping to Google DNS
+      ios_command:
+       commands:
+        - show ip route
+      register: output
+
+    - name: Execute me Please
+      debug: 
+      #msg: 'hello world'
+      # var: output
+      # msg: 'Hey my output of above command is {{ output }}' 
+       msg: 'Hello world this is me , please run me'
+      #to run the sepecific part of the code
+      tags:
+       - anything
