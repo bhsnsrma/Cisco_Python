@@ -20,11 +20,13 @@ device1={
 # if we pass (**Device1) = it means we are passing dictionary, if we want to pass list then (*Device) 
 device_connect=netmiko.ConnectHandler(**device1)
 #print([i for i in dir(device_connect) if 'send' in i])
-#now sending config from file]
-conf=['hostnme pyrouter','username hello priv 10 password cisco','end']
+#now sending configuration of device.
+#conf=['hostname Pyrouter','username hello pri 10 pass cisco']
 #output=device_connect.send_config_set(conf)
 #print(output)
-#sending config from file
-output1=device_connect.send_config_from_file('myrouter.txt')
-print(output1)
+
+#sendig configuration from file
+output1=device_connect.send_config_from_file(filename='myroute.txt')
+print(output)
+
 
