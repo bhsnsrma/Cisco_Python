@@ -1,0 +1,16 @@
+---
+ - hosts: 192.168.176.128
+   tasks: 
+    - ios_command:
+       commands: show ip int br
+      register: output
+
+    - name: the message
+      ios_command:
+       commands: show ip int br
+      register: output1
+
+    - debug: var=output
+    - name: Using outpt data
+      debug: msg="I am using {{ output.changed }} and {{ output.stdout_lines }}"
+

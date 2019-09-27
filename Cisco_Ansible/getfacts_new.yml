@@ -1,0 +1,19 @@
+---
+ - hosts: 192.168.176.128
+   tasks: 
+   - name: "Want to run below Commands"
+     ios_facts:
+      gather_subset: all
+     register: x
+
+   - name: using 
+     debug: var=x
+
+   - name: 
+     debug: msg='{{ ansible_net_interfaces.GigabitEthernet.ipv4[0].address}}'
+
+   - name: abc
+     debug: msg="{{ item.mtu }}"
+     with_items:
+      - {{ x.ansible_facts.ansible_net_interfaces }}'
+

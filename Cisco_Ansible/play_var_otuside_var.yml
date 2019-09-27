@@ -1,0 +1,24 @@
+---
+ - hosts: all
+   gather_facts: no
+   vars_files:
+    - outside_var.yml
+    #use variables from extrnal file outside_var.yml file
+   tasks: #name is just the task name which will print while executing.
+    - name: Just message
+      ios_command:
+       commands: "{{ x }}"
+
+    - name: 
+      ios_ping:
+       dest: "{{ ip }}"
+
+    - name: using "{{ ip }}"
+      ios_command:
+       commands: ping "{{ ip }}"
+
+    - name: dns
+      debug: msg="Our dns server ip is {{ ip }}"
+       # debug will print the content written in msg.
+       #
+       # run using below command: "ansible-playbook play_var.yml -e ip=1.1.1.1" : in this case just for that run we have change the valus of variable ip to  1.1.1.1 

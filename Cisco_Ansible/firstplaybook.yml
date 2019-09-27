@@ -11,9 +11,9 @@
     - name: Ping to Google DNS
       ios_command:
        commands:
-        - show ip route
+        - show ip int br
       register: output
-
+        
     - name: Execute me Please
       debug: 
       #msg: 'hello world'

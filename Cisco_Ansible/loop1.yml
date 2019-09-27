@@ -1,0 +1,17 @@
+---
+ - hosts: all    # TARGET SECTION
+   gather_facts: no
+   vars:    # VARIABLE SECTION
+    cmd: 
+     - show ip int br
+     - show vers
+     - sh run
+     - sh clock
+   tasks:  #TASK SECTION
+    - name: running command "{{ item }}"
+      ios_command:
+       commands: "{{ item }}"
+       #with_items:  old keyword 
+       #new keyword is loop
+      loop:
+       - "{{ cmd }}"

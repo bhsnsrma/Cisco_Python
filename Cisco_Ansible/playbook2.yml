@@ -1,0 +1,17 @@
+---
+ - hosts: all
+   gather_facts: no
+     #fork count make the number of connection towards the devices in asingle shot,
+     #here while execuring 2 devices are connected in a single shot then 2 devices
+     #forks: 2
+     #with serial : if we have some high config deviecs, it will execute the command
+     #with some devices and move on another task meanwhile other working on task 1, 
+     #it will not wait for all devices to execute the 1st task and move onto the next
+     #task, finally the slowest one will show the output at last.
+   serial: 2
+   tasks:
+    - name: just message
+      debug: msg='hello cisco'
+
+    - name: just ok
+      debug: msg='Network Automation'

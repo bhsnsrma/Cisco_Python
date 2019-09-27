@@ -1,0 +1,30 @@
+---
+ - hosts: all    # TARGET SECTION
+   vars_files:    # VARIABLE SECTION
+    variables.yml
+   tasks:  #TASK SECTION
+    - name: running command "{{ item }}"
+      ios_command:
+       commands: "{{ item }}"
+       #with_items:  old keyword 
+       #new keyword is loop
+      loop:   # this is for loop programming
+       - "{{ cmd }}"
+
+    - name: Creating users with password
+      ios_user:
+              #name: "{{ item }}"
+       name: '{{ item.x }}'
+       privilege: 15
+       state: absent   #absent keywork is to delete 
+              #configured_password: cisco
+       configured_password: "{{ item.y }}"
+      with_items:
+       - '{{ users1 }}'
+     - name: removing configured users
+       ios_user:
+         aggregate:
+         -name: "{{ item.x }}"
+      with_items:
+       - '{{ users1 }}'
+      purge:yes :
